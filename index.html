@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scruples — AI Command Center</title>
+<meta name="description" content="Scruples: the AI operating system for your spa. Voice receptionist, social scheduler, and comment replies — one screen, always on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===================== LOGIN ===================== -->
+<section class="login" id="login">
+  <div class="login__art">
+    <div class="glow g1"></div><div class="glow g2"></div>
+    <div class="login__brandwrap">
+      <div class="mark mark--light">
+        <div class="mark__logo">S</div>
+        <div><span class="mark__name">Scruples</span><span class="mark__sub">AI Command Center</span></div>
+      </div>
+      <div class="login__lede">
+        <h1>Your spa, <span class="em">always answering.</span></h1>
+        <p>One screen for the three systems that never sleep: the voice receptionist that books every call, the scheduler that posts everywhere, and the AI that replies to every comment.</p>
+        <div class="login__pills">
+          <span class="login__pill">☎️ Voice Receptionist</span>
+          <span class="login__pill">📅 Social Scheduler</span>
+          <span class="login__pill">💬 Comment Replies</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="login__form">
+    <div class="login__card">
+      <h2>Welcome back</h2>
+      <p class="sub">Sign in to your Scruples command center.</p>
+      <form id="loginForm">
+        <div class="field"><label>Email</label><input type="email" id="email" placeholder="owner@scruplesspa.com" autocomplete="username"></div>
+        <div class="field"><label>Password</label><input type="password" id="pass" placeholder="••••••••" autocomplete="current-password"></div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;padding:13px">Sign in</button>
+      </form>
+      <div class="login__or">or</div>
+      <button class="btn btn-gold" id="demoBtn" style="width:100%;justify-content:center;padding:13px">Enter the live demo →</button>
+      <p class="login__hint">Demo login — email <b>owner@scruplesspa.com</b> · password <b>demo</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== APP ===================== -->
+<div class="app hide" id="app">
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="mark">
+        <div class="mark__logo">S</div>
+        <div><span class="mark__name">Scruples</span><span class="mark__sub">Command Center</span></div>
+      </div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar__foot">
+      <div class="sidebar__status"><span class="dot"></span> All systems live · demo data</div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div>
+        <div class="topbar__title" id="pageTitle">Overview</div>
+        <div class="topbar__sub" id="pageSub">Scruples Spa — Main Street</div>
+      </div>
+      <div class="search">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search calls, posts, comments…">
+      </div>
+      <div class="topbar__right">
+        <button class="iconbtn" id="themeBtn" title="Toggle theme">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4 12H2m20 0h-2m-2.9-7.1-1.4 1.4M7.3 16.7l-1.4 1.4m0-12.2 1.4 1.4m9.4 9.4 1.4 1.4"/></svg>
+        </button>
+        <button class="iconbtn" title="Notifications"><span class="badge-dot"></span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        </button>
+        <div class="avatar" id="avatar">SO</div>
+      </div>
+    </header>
+    <main id="view"></main>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+<div id="modalMount"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
