@@ -299,3 +299,25 @@ svg.ico{width:16px;height:16px;flex-shrink:0;display:inline-block;vertical-align
 @media(max-width:880px){
   .app{grid-template-columns:1fr}.sidebar{display:none}.login{grid-template-columns:1fr}.login__art{display:none}
 }
+
+/* ── Live concurrent voice-agent calls (multi-instance fleet) ────────────── */
+.live-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.live-call{padding:12px 14px;border-radius:14px;border:1px solid var(--line,#e7e2d4);background:var(--bg-card,#fff);box-shadow:inset 3px 0 0 #888;transition:transform .15s ease}
+.live-call:hover{transform:translateY(-1px)}
+.live-call__row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.live-call__name{font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.live-call__caller{margin-top:2px;font-size:11px}
+.live-call__svc{margin-top:8px;font-size:13px}
+.live-call__snippet{margin-top:6px;font-style:italic;opacity:.78;font-size:12px;line-height:1.35}
+.live-call__foot{margin-top:10px;display:flex;justify-content:space-between;font-size:11px}
+.live-call .dot{width:7px;height:7px;border-radius:50%;background:#888;display:inline-block}
+.live-call--ringing{box-shadow:inset 3px 0 0 var(--gold,#d4a857)}
+.live-call--ringing .dot{background:var(--gold,#d4a857);animation:lc-pulse 1.2s ease-in-out infinite}
+.live-call--active{box-shadow:inset 3px 0 0 #2f9e6d}
+.live-call--active .dot{background:#2f9e6d}
+.live-call--booking{box-shadow:inset 3px 0 0 var(--gold-deep,#b88a3e)}
+.live-call--booking .dot{background:var(--gold-deep,#b88a3e);animation:lc-pulse 1.6s ease-in-out infinite}
+.live-call--transfer{box-shadow:inset 3px 0 0 #5b8def}
+.live-call--transfer .dot{background:#5b8def}
+.live-call--voicemail{box-shadow:inset 3px 0 0 #888;opacity:.85}
+@keyframes lc-pulse{0%,100%{opacity:1}50%{opacity:.35}}

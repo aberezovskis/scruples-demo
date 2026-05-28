@@ -56,10 +56,22 @@ window.SCRUPLES = (function () {
   // ---- SYSTEM 1: Voice Receptionist --------------------------------------
   const voice = {
     stats: [
-      { label:"Answer rate",        value:"100%",  sub:"vs ~78% before" },
-      { label:"Avg. handle time",   value:"2m 41s",sub:"per call" },
-      { label:"Booked by AI",       value:"312",   sub:"this month" },
-      { label:"Transferred to team",value:"73",    sub:"warm transfers" },
+      { label:"Live calls right now", value:"8",    sub:"all answered in parallel · unlimited capacity" },
+      { label:"Answer rate",          value:"100%", sub:"vs ~78% before" },
+      { label:"Booked by AI",         value:"312",  sub:"this month" },
+      { label:"Avg. handle time",     value:"2m 41s",sub:"per call" },
+    ],
+    // Live fleet: every inbound line is picked up by its own AI instance in parallel.
+    // (Demo data — illustrates the multi-instance architecture; not live feeds.)
+    liveCalls: [
+      { id:"lc-1", name:"New caller",            caller:"+1 (416) 555-0148", status:"booking",   elapsed:"1m 12s", service:"Gel Manicure + Removal", stylist:"Maria",      snippet:"“booking Thursday 1:00pm…”" },
+      { id:"lc-2", name:"J. Patel · returning",  caller:"+1 (905) 555-0271", status:"active",    elapsed:"0m 48s", service:"Deep Tissue Massage",    stylist:"Sofia",      snippet:"“confirming preferred therapist…”" },
+      { id:"lc-3", name:"New caller",            caller:"+1 (647) 555-0319", status:"ringing",   elapsed:"0m 02s", service:"—",                   stylist:"—",     snippet:"answering…" },
+      { id:"lc-4", name:"VIP · Mrs. Laurent",    caller:"+1 (416) 555-0902", status:"transfer",  elapsed:"0m 31s", service:"Reschedule",             stylist:"Front desk", snippet:"“warm transfer to Maria…”" },
+      { id:"lc-5", name:"After-hours",           caller:"+1 (289) 555-0156", status:"active",    elapsed:"1m 49s", service:"Hot Stone Massage",      stylist:"Sofia",      snippet:"“offering Sat 11:30am…”" },
+      { id:"lc-6", name:"New caller",            caller:"+1 (416) 555-0488", status:"booking",   elapsed:"2m 03s", service:"HydraFacial",            stylist:"Maria",      snippet:"“sending text confirmation…”" },
+      { id:"lc-7", name:"R. Chen · returning",   caller:"+1 (905) 555-0644", status:"active",    elapsed:"0m 22s", service:"Signature Facial",       stylist:"Maria",      snippet:"“checking Fri afternoon availability…”" },
+      { id:"lc-8", name:"Voicemail callback",    caller:"+1 (647) 555-0775", status:"voicemail", elapsed:"0m 12s", service:"—",                   stylist:"—",     snippet:"captured callback request" },
     ],
     // a simulated incoming call used for the "live" wow moment
     liveCall: {

@@ -106,9 +106,22 @@
         <td><span class="pill pill--${sp}">${c.sentiment}</span></td><td class="mono muted">${c.booking}</td><td class="mono muted">${c.time}</td></tr>`}).join('');
       const bookings=D.voice.todayBookings.map(b=>`<tr><td class="mono"><b>${b.time}</b></td><td>${b.service}</td><td>${b.staff}</td><td>${b.client}</td>
         <td><span class="pill ${b.source==='AI'?'pill--gold':'pill--neu'}">${b.source}</span></td></tr>`).join('');
+      const lcPill={booking:'gold',active:'pos',ringing:'neu',transfer:'info',voicemail:'neu'};
+      const liveFleet=(D.voice.liveCalls||[]).map(c=>{
+        const lbl=c.status.charAt(0).toUpperCase()+c.status.slice(1);
+        const num=(c.id||'').split('-')[1]||'';
+        return `<div class="live-call live-call--${c.status}">
+          <div class="live-call__row"><span class="dot"></span><span class="live-call__name">${c.name}</span><span class="pill pill--${lcPill[c.status]||'neu'}">${lbl}</span></div>
+          <div class="live-call__caller mono small muted">${c.caller}</div>
+          <div class="live-call__svc"><b>${c.service}</b> · ${c.stylist}</div>
+          <div class="live-call__snippet small">${c.snippet}</div>
+          <div class="live-call__foot small muted"><span>⏱ ${c.elapsed}</span><span>AI instance #${num}</span></div>
+        </div>`;}).join('');
       return `<div class="view">
-        ${sysbar('phone','AI Voice Receptionist','Answers every call, books into Phorest, transfers to your front desk.','Answering live')}
+        ${sysbar('phone','AI Voice Receptionist','Picks up every call in parallel — never busy, never on hold. Books into Phorest, transfers to your front desk.','8 calls live now')}
         ${statRow(D.voice.stats)}
+        <div class="card section-gap"><div class="card__title"><h3>Live calls right now</h3><span class="meta">${(D.voice.liveCalls||[]).length} concurrent · every line answered in parallel</span></div>
+          <div class="card-pad"><div class="live-grid">${liveFleet}</div></div></div>
         <div class="grid g-2">
           <div class="card"><div class="card__title"><h3>Recent calls</h3><span class="meta">auto-logged with transcript</span></div>
             <div class="card-pad" style="overflow:auto"><table class="table"><thead><tr><th>Caller</th><th>Intent</th><th>Outcome</th><th>Length</th><th>Sentiment</th><th>Booking</th><th>Time</th></tr></thead><tbody>${calls}</tbody></table></div></div>
